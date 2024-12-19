@@ -10,7 +10,7 @@
     ".": "./index.js"
   },
   "scripts": {
-    "start": "npm run build:module && npm run build:worker",
+    "start": "npm run build:module && npm run build:worker && serve .",
     "build:module": "esbuild --target=es2020 --bundle src/index.ts --format=esm | terser --config-file terser.json --module -o index.js",
     "build:worker": "esbuild --target=es2020 --bundle src/worker.ts --format=iife --global-name=downloadZip | terser --config-file terser.json -o worker.js",
     "test": "deno test --allow-read test/"
@@ -29,6 +29,7 @@
   "license": "MIT",
   "devDependencies": {
     "esbuild": "^0.17.19",
+    "serve": "^14.2.4",
     "terser": "~5.14"
   }
 }
